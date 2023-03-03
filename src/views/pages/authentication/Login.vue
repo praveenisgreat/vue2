@@ -278,12 +278,12 @@ export default {
       this.$refs.loginForm.validate().then(success => {
         if (success) {
           this.$store
-          .dispatch("LOGIN", {
-            email: this.userEmail,
-            password: this.password,
-          })
-          .then(response => {
-              const userData  = response.data
+            .dispatch('LOGIN', {
+              email: this.userEmail,
+              password: this.password,
+            })
+            .then(response => {
+              const userData = response.data
               console.log(userData.ability)
               useJwt.setToken(response.data.accessToken)
               useJwt.setRefreshToken(response.data.refreshToken)
@@ -308,12 +308,12 @@ export default {
                     },
                   })
                 })
-              this.$router.push({path: '/card-registration'})
+              this.$router.push({ path: '/card-registration' }).catch(() => {})
             })
-          .catch(error => {
-            console.log("Login Vue error="+error)
-            this.$refs.loginForm.setErrors(error)
-          })
+            .catch(error => {
+              console.log(`Login Vue error=${error}`)
+              this.$refs.loginForm.setErrors(error)
+            })
         }
       })
     },

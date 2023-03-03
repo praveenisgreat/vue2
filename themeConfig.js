@@ -9,7 +9,7 @@ export const $themeBreakpoints = {}
 // APP CONFIG
 export const $themeConfig = {
   app: {
-    appName: 'UOB Group', // Will update name in navigation menu (Branding)
+    appName: 'PowerLender', // Will update name in navigation menu (Branding)
     // eslint-disable-next-line global-require
     appLogoImage: require('@/assets/images/logo/logo-uob.png'), // Will update logo in navigation menu (Branding)
   },
@@ -17,10 +17,10 @@ export const $themeConfig = {
     isRTL: false,
     skin: 'light', // light, dark, bordered, semi-dark
     routerTransition: 'zoom-fade', // zoom-fade, slide-fade, fade-bottom, fade, zoom-out, none
-    type: 'vertical', // vertical, horizontal
+    type: 'uob-vertical', // vertical, horizontal
     contentWidth: 'full', // full, boxed
     menu: {
-      hidden: true,
+      hidden: false,
       isCollapsed: false,
     },
     navbar: {
@@ -31,7 +31,7 @@ export const $themeConfig = {
     footer: {
       type: 'static', // static, sticky, hidden
     },
-    customizer: true,
+    customizer: false,
     enableScrollToTop: true,
   },
 }
