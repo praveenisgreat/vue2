@@ -64,7 +64,7 @@
   // floating nav
   &.floating-nav {
     position: fixed;
-    right: 0;
+    left: 0;
     margin: #{$floating-nav-margin} #{$content-padding} 0;
     width: calc(100vw - (100vw - 100%) - calc(#{$content-padding} * 2) - #{$menu-expanded-width});
     border-radius: $card-border-radius;
@@ -115,7 +115,7 @@
     }
     flex-basis: 100%;
     transition: 300ms ease all;
-    margin-left: 0;
+    margin-right: 0;
 
     // Navbar bookmark primary color on hover
     .bookmark-wrapper {

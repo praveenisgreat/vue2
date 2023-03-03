@@ -13,7 +13,7 @@
 
 // Mixins for the menu and navbar position, margin and width change
 @mixin main-menu-width($menu-width) {
-  margin-left: $menu-width;
+  margin-right: $menu-width;
 }
 @mixin menu-navbar-width($menu-width) {
   float: left;

@@ -8,6 +8,11 @@ export default [
     icon: 'MailIcon',
   },
   {
+    title: 'Chat',
+    route: 'apps-chat',
+    icon: 'MessageSquareIcon',
+  },
+  {
     title: 'Todo',
     route: 'apps-todo',
     icon: 'CheckSquareIcon',

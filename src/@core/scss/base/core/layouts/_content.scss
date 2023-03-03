@@ -31,7 +31,7 @@ html {
     transition: 300ms ease all;
     backface-visibility: hidden;
     min-height: calc(100% - #{$footer-height});
-    margin-left: $menu-expanded-width;
+    margin-right: $menu-expanded-width;
     &.app-content {
       padding: calc(#{$content-padding} + #{$navbar-height} + #{$floating-nav-margin}) #{$content-padding} 0;
       &.show-overlay {

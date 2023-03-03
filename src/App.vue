@@ -26,6 +26,7 @@ import store from '@/store'
 const LayoutVertical = () => import('@/layouts/vertical/LayoutVertical.vue')
 const LayoutHorizontal = () => import('@/layouts/horizontal/LayoutHorizontal.vue')
 const LayoutFull = () => import('@/layouts/full/LayoutFull.vue')
+const LayoutUobVertical = () => import('@/layouts/vertical/LayoutUobVertical.vue')
 
 export default {
   components: {
@@ -34,6 +35,7 @@ export default {
     LayoutHorizontal,
     LayoutVertical,
     LayoutFull,
+    LayoutUobVertical,
 
   },
   // ! We can move this computed: layout & contentLayoutType once we get to use Vue 3

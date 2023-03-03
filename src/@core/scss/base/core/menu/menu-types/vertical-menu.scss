@@ -23,6 +23,7 @@
       transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background 0s;
       transform: translate3d(0, 0, 0);
       backface-visibility: hidden;
+      right: 0;
       .navigation {
         li a {
           align-items: center;
@@ -78,7 +79,7 @@
       }
       //Content expanded
       .footer {
-        @include main-menu-width($menu-expanded-width);
+        @include main-menu-width($menu-expanded-width); 
       }
     }
     //Vertical menu [Collapsed]
@@ -100,7 +101,7 @@
         }
         // fixed-top navbar when menu-collapsed
         &.fixed-top {
-          left: $menu-collapsed-width;
+          right: $menu-collapsed-width;
         }
       }
       // Main menu collapsed
