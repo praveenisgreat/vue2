@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 export default [
   {
     path: '/apps/calendar',

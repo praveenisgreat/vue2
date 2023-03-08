@@ -45,9 +45,9 @@ module.exports = {
       })
   },
   transpileDependencies: ['vue-echarts', 'resize-detector'],
-  //Our gateway base URL for CROS
-  //Changes based on backend API gateway 
-  devServer:{
-    proxy: 'http://localhost:8762' 
-  }
+  // Our gateway base URL for CROS
+  // Changes based on backend API gateway
+  devServer: {
+    proxy: 'http://localhost:8762',
+  },
 }

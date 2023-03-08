@@ -7,6 +7,7 @@
       :item="item"
     />
   </ul>
+
 </template>
 
 <script>

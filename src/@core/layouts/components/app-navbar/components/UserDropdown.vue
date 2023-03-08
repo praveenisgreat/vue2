@@ -38,6 +38,7 @@
       />
       <span>Profile</span>
     </b-dropdown-item>
+
     <b-dropdown-item
       :to="{ name: 'apps-todo' }"
       link-class="d-flex align-items-center"
@@ -63,6 +64,7 @@
       />
       <span>Settings</span>
     </b-dropdown-item>
+
     <b-dropdown-item
       :to="{ name: 'pages-faq' }"
       link-class="d-flex align-items-center"

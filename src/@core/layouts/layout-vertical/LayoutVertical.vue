@@ -50,7 +50,7 @@
     <!-- CONTENT TYPE: Left -->
     <transition
       :name="routerTransition"
-      mode="in-out"
+      mode="out-in"
     >
       <component
         :is="layoutContentRenderer"

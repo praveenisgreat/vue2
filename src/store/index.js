@@ -16,6 +16,5 @@ export default new Vuex.Store({
     verticalMenu,
     webService,
   },
-  
   strict: process.env.DEV,
 })

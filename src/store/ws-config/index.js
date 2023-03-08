@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 export default {
-  //namespaced: true,
+  // namespaced: true,
   state: {
     success: '',
     token: localStorage.getItem('token') || '',
-    user: {}
+    user: {},
   },
 
   mutations: {
@@ -15,8 +15,8 @@ export default {
 
     AUTH_SUCCESS(state, token, user) {
       state.status = 'success'
-      state.token   = token
-      state.user    = user
+      state.token = token
+      state.user = user
     },
 
     AUTH_ERROR(state) {
@@ -31,48 +31,42 @@ export default {
   },
   actions: {
     LOGIN({ commit }, user) {
-
       return new Promise((resolve, reject) => {
-
         commit('AUTH_REQUEST')
-        axios.post('http://localhost:8080/auth/login', {
+        axios.post('http://localhost:8081/auth/login', {
           username: user.email,
-          password: user.password
+          password: user.password,
         })
-          
-        .then(response => {
 
-            const token = response.data.token
-            const user  = response.data.user
+          .then(response => {
+            const { token } = response.data
+            const { user } = response.data
 
             localStorage.setItem('token', token)
             localStorage.setItem('user', JSON.stringify(user))
 
-            axios.defaults.headers.common['Authorization'] = "Bearer" +token
+            axios.defaults.headers.common.Authorization = `Bearer${token}`
             commit('AUTH_SUCCESS', token, user)
 
             resolve(response)
-
-        }).catch(err => { 
-
+          }).catch(err => {
             commit('AUTH_ERROR')
             localStorage.removeItem('token')
 
             reject(err)
-
-        })
+          })
       })
     },
 
     LOGOUT({ commit }) {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         commit('AUTH_LOGOUT')
         localStorage.removeItem('token')
         localStorage.removeItem('user')
-        delete axios.defaults.headers.common['Authorization']
+        delete axios.defaults.headers.common.Authorization
         resolve()
       })
-    }
+    },
   },
   getters: {
     isLoggedIn: state => !!state.token,
@@ -80,5 +74,5 @@ export default {
   },
 
   modules: {
-  }
+  },
 }

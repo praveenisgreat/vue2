@@ -1,9 +1,7 @@
 import Vue from 'vue'
 import { ToastPlugin, ModalPlugin } from 'bootstrap-vue'
 import VueCompositionAPI from '@vue/composition-api'
-//image
 
-import i18n from '@/libs/i18n'
 import router from './router'
 import store from './store'
 import App from './App.vue'
@@ -17,7 +15,8 @@ import '@/libs/toastification'
 import '@/libs/acl'
 
 // For FAQ
-import '@/@fake-db/db'
+// eslint-disable-next-line import/extensions
+// import '@/@fake-db/db'
 
 // BSV Plugin Registration
 Vue.use(ToastPlugin)
@@ -37,6 +36,5 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
-  i18n,
   render: h => h(App),
 }).$mount('#app')

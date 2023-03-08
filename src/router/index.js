@@ -2,17 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // Routes
-import { canNavigate } from '@/libs/acl/routeProtection'
 import { isUserLoggedIn, getUserData, getHomeRouteForLoggedInUser } from '@/auth/utils'
-import dashboard from './routes/dashboard'
-import uiElements from './routes/ui-elements/index'
-import chartsMaps from './routes/charts-maps'
-import formsTable from './routes/forms-tables'
-import others from './routes/others'
-
-import apps from './routes/apps'
-import pages from './routes/pages'
 import uob from './routes/uob'
+import pages from './routes/pages'
+import apps from './routes/apps'
 
 Vue.use(VueRouter)
 
@@ -25,13 +18,36 @@ const router = new VueRouter({
   routes: [
     { path: '/', redirect: { name: 'auth-login' } },
     ...apps,
-    ...dashboard,
     ...pages,
-    ...chartsMaps,
-    ...formsTable,
-    ...uiElements,
-    ...others,
     ...uob,
+    {
+      path: '/home',
+      name: 'home',
+      component: () => import('@/views/Home.vue'),
+      meta: {
+        pageTitle: 'Home',
+        breadcrumb: [
+          {
+            text: 'Home',
+            active: true,
+          },
+        ],
+      },
+    },
+    {
+      path: '/second-page',
+      name: 'second-page',
+      component: () => import('@/views/SecondPage.vue'),
+      meta: {
+        pageTitle: 'Second Page',
+        breadcrumb: [
+          {
+            text: 'Second Page',
+            active: true,
+          },
+        ],
+      },
+    },
     {
       path: '*',
       redirect: 'error-404',

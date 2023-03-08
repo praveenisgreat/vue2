@@ -69,7 +69,6 @@ export default {
   },
   created() {
     this.collapseItemID = uuidv4()
-
     this.visible = this.isVisible
   },
   methods: {
