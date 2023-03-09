@@ -1,6 +1,7 @@
+export const codeBasic = `
 <template>
-  <b-card-code title="Repeating Forms">
-    <div>
+  <div>
+     <div>
       <b-form
         ref="form"
         :style="{height: trHeight}"
@@ -112,25 +113,18 @@
       />
       <span>Add New</span>
     </b-button>
-
-    <template #code>
-      {{ codeBasic }}
-    </template>
-  </b-card-code>
+  </div>
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code'
 import {
   BForm, BFormGroup, BFormInput, BRow, BCol, BButton,
 } from 'bootstrap-vue'
 import { heightTransition } from '@core/mixins/ui/transition'
 import Ripple from 'vue-ripple-directive'
-import { codeBasic } from './code'
 
 export default {
   components: {
-    BCardCode,
     BForm,
     BRow,
     BCol,
@@ -151,7 +145,6 @@ export default {
         prevHeight: 0,
       }],
       nextTodoId: 2,
-      codeBasic,
     }
   },
   mounted() {
@@ -171,9 +164,6 @@ export default {
 
       this.$nextTick(() => {
         this.trAddHeight(this.$refs.row[0].offsetHeight)
-        setTimeout(() => {
-          this.$refs.form.style.overflow = null
-        }, 350)
       })
     },
     removeItem(index) {
@@ -196,3 +186,6 @@ export default {
   transition: .35s height;
 }
 </style>
+`
+
+export const codeInfo = 'default'

@@ -1,12 +1,19 @@
 export default [
   {
-    title: 'Home',
-    route: 'home',
-    icon: 'HomeIcon',
+    header: 'External',
   },
   {
-    title: 'Second Page',
-    route: 'second-page',
-    icon: 'FileIcon',
+    title: 'BWC',
+    // route: 'home',
+    icon: 'ActivityIcon',
+    tag: 'loading',
+    tagVariant: 'light-danger',
+  },
+  {
+    title: 'VSA',
+    // route: 'second-page',
+    icon: 'ActivityIcon',
+    tag: 'Ok',
+    tagVariant: 'light-success',
   },
 ]

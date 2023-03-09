@@ -1,24 +1,27 @@
 <template>
-    <b-card-code>
-      <b-form ref="form"
-              :style="{height: trHeight}"
-              class="repeater-form"
-              @submit.prevent="repeateAgain"
-              >
-        <div v-for="(item, index) in items"
-              :id="item.id"
-              :key="item.id"
-              ref="row">
+  <b-card-code>
+    <b-form
+      ref="form"
+      :style="{height: trHeight}"
+      class="repeater-form"
+      @submit.prevent="repeateAgain"
+    >
+      <div
+        v-for="(item, index) in items"
+        :id="item.id"
+        :key="item.id"
+        ref="row"
+      >
         <b-row>
-          <b-col md="12">
+          <b-col md="10">
             <span class="mb-3">Address Type</span>
             <b-form-group>
               <b-form-radio-group
                 id="radio-group-2"
+                ref="radio"
                 v-model="item.addressType"
                 name="radio-sub-component"
                 class="demo-inline-spacing"
-                ref="radio"
               >
                 <b-form-radio value="home">
                   Home
@@ -29,7 +32,24 @@
               </b-form-radio-group>
             </b-form-group>
           </b-col>
-        </b-row><br>
+          <!-- Remove Button -->
+          <b-col
+            md="2"
+          >
+            <b-button
+              v-ripple.400="'rgba(234, 84, 85, 0.15)'"
+              variant="flat-danger"
+              class="mt-0 mt-md-2"
+              size="sm"
+              @click="removeItem(index)"
+            >
+              <feather-icon
+                icon="XIcon"
+                class="mr-25"
+              />
+            </b-button>
+          </b-col>
+        </b-row>
         <b-row>
           <b-col md="4">
             <b-form-group
@@ -113,94 +133,94 @@
             </b-form-group>
           </b-col>
         </b-row>
-        </div>
-      </b-form>
-      <b-button
-        v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-        variant="primary"
-        @click="repeateAgain"
-      >
-        <feather-icon
-          icon="PlusIcon"
-          class="mr-25"
-        />
-        <span>Add New</span>
-      </b-button>
-      <template #code>
-        {{ codeBasic }}
-      </template>
+      </div>
+    </b-form>
+    <b-button
+      v-ripple.400="'rgba(255, 255, 255, 0.15)'"
+      variant="primary"
+      size="sm"
+      @click="repeateAgain"
+    >
+      <feather-icon
+        icon="PlusIcon"
+        class="mr-25"
+      />
+      <span>Add New</span>
+    </b-button>
+    <template #code>
+      {{ codeBasic }}
+    </template>
   </b-card-code>
-  </template>
-  
-  <script>
-  import BCardCode from '@core/components/b-card-code'
-  import {
-    BRow, BCol, BFormGroup, BFormInput, BFormCheckbox, BForm, BButton, BFormRadioGroup, BFormRadio
-  } from 'bootstrap-vue'
-  import { heightTransition } from '@core/mixins/ui/transition'
-  import Ripple from 'vue-ripple-directive'
-  import { codeBasic } from '@/views/forms/form-repeater/code'
- 
-  export default {
-    components: {
-      BCardCode,
-      BRow,
-      BCol,
-      BFormGroup,
-      BFormInput,
-      BFormCheckbox,
-      BForm,
-      BButton,
-      BFormRadioGroup,
-      BFormRadio
-    },
-    directives: {
-      Ripple,
-    },
-    mixins: [heightTransition],
-    data: () => ({
-      items: [{
-        id: 1,
-        addressType: 'home',
-        selected: 'male',
-        selected1: 'designer',
-        prevHeight: 0,
-      }],
-      nextTodoId: 2,
-      codeBasic,
-    }),
-    mounted() {
-    this.initTrHeight()
-    },
-    created() {
-      window.addEventListener('resize', this.initTrHeight)
-    },
-    destroyed() {
-      window.removeEventListener('resize', this.initTrHeight)
-    },
-    methods: {
-      repeateAgain() {
-        this.items.push({
-          id: this.nextTodoId += this.nextTodoId,
-        })
+</template>
 
-        this.$nextTick(() => {
-          this.trAddHeight(this.$refs.row[0].offsetHeight)
-        })
-      },
-      removeItem(index) {
-        this.items.splice(index, 1)
-        this.trTrimHeight(this.$refs.row[0].offsetHeight)
-      },
-      initTrHeight() {
-        this.trSetHeight(null)
-        this.$nextTick(() => {
-          this.trSetHeight(this.$refs.form.scrollHeight)
-        })
-      },
+<script>
+import BCardCode from '@core/components/b-card-code'
+import {
+  BRow, BCol, BFormGroup, BFormInput, BForm, BButton, BFormRadioGroup, BFormRadio,
+} from 'bootstrap-vue'
+import { heightTransition } from '@core/mixins/ui/transition'
+import Ripple from 'vue-ripple-directive'
+import { codeBasic } from '@/views/forms/form-repeater/code'
+
+export default {
+  components: {
+    BCardCode,
+    BRow,
+    BCol,
+    BFormGroup,
+    BFormInput,
+    BForm,
+    BButton,
+    BFormRadioGroup,
+    BFormRadio,
+  },
+  directives: {
+    Ripple,
+  },
+  mixins: [heightTransition],
+  data: () => ({
+    items: [{
+      id: 1,
+      addressType: 'home',
+      selected: 'male',
+      selected1: 'designer',
+      prevHeight: 0,
+    }],
+    nextTodoId: 2,
+    codeBasic,
+  }),
+  mounted() {
+    this.initTrHeight()
+  },
+  created() {
+    window.addEventListener('resize', this.initTrHeight)
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.initTrHeight)
+  },
+  methods: {
+    repeateAgain() {
+      this.items.push({
+        id: this.nextTodoId += this.nextTodoId,
+      })
+
+      this.$nextTick(() => {
+        this.trAddHeight(this.$refs.row[0].offsetHeight)
+      })
     },
-  }
-  </script>
+    removeItem(index) {
+      this.items.splice(index, 1)
+      this.trTrimHeight(this.$refs.row[0].offsetHeight)
+    },
+    initTrHeight() {
+      this.trSetHeight(null)
+      this.$nextTick(() => {
+        this.trSetHeight(this.$refs.form.scrollHeight)
+      })
+    },
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 .repeater-form {
@@ -208,4 +228,3 @@
   transition: .35s height;
 }
 </style>
-  

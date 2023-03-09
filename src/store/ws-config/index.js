@@ -33,7 +33,7 @@ export default {
     LOGIN({ commit }, user) {
       return new Promise((resolve, reject) => {
         commit('AUTH_REQUEST')
-        axios.post('http://localhost:8081/auth/login', {
+        axios.post('http://localhost:8080/auth/login', {
           username: user.email,
           password: user.password,
         })

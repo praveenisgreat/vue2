@@ -13,7 +13,7 @@
 
       <app-collapse-item
         title="Personal"
-        @load="updateVisible(!visible)"
+        @load="updateVisible(index)"
       >
         <CustomerBasic />
       </app-collapse-item>
@@ -33,11 +33,12 @@
       <app-collapse-item
         title="Cards"
       >
+        <slot name="swiperSlot" /><br>
         <CardSlider />
       </app-collapse-item>
 
       <app-collapse-item
-        title="Declaration"
+        title="Summary"
       >
         Cheesecake cotton candy bonbon muffin cupcake tiramisu croissant. Tootsie roll sweet candy bear claw chupa chups lollipop toffee. Macaroon donut liquorice powder candy carrot cake macaroon fruitcake. Cookie toffee lollipop cotton candy ice cream dragée soufflé. Cake tiramisu lollipop wafer pie soufflé dessert tart. Biscuit ice cream pie apple pie topping oat cake dessert. Soufflé icing caramels. Chocolate cake icing ice cream macaroon pie cheesecake liquorice apple pie.
       </app-collapse-item>
@@ -55,6 +56,7 @@ import CustomerBasic from '../customer/CustomerBasic.vue'
 import Address from '../customer/Address.vue'
 import Occupation from '../customer/Occupation.vue'
 import CardSlider from '../extensions/swiper/SwiperResponsive.vue'
+import 'swiper/css/swiper.css'
 
 export default {
   components: {
@@ -71,6 +73,16 @@ export default {
     return {
       collapseType: 'margin',
     }
+  },
+  mounted() {
+    // eslint-disable-next-line no-unused-expressions
+    // this.slider = new Swiper(this.$refs.cardSwiper, this.swiperOptions)
+    this.$forceUpdate()
+  },
+  methods: {
+    updateVisible(index) {
+      console.log("Index=" + index)
+    },
   },
 }
 </script>
